@@ -12,17 +12,21 @@
 import axios from 'axios';
 
 export default {
-  data() {
-    return {
-      products: [],
-    }
+  async asyncData(){
+    const response = await axios.get('http://localhost:3000/products');
+    const products = response.data;
+    return { products };
   },
 
-  async created() {
-    const response = await axios.get('http://localhost:3000/products');
-    console.log(response);
-    this.products = response.data;
-  }
+  // data() {
+  //   return {
+  //     products: [],
+  //   }
+  // },
+  //
+  // async created() {
+  //
+  // }
 }
 
 </script>
