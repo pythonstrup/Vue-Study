@@ -5,7 +5,8 @@
         <input type="text"/>
       </div>
       <ul>
-        <li v-for="product in products" :key="product.id" class="item flex">
+        <li v-for="product in products" :key="product.id" class="item flex"
+            @click="moveToDetailPage(product.id)">
           <img class="product-image" :src="product.imageUrl" :alt="product.name">
           <p>{{ product.name }}</p>
           <span>{{ product.price }}</span>
@@ -29,6 +30,12 @@ export default {
     });
     return {products};
   },
+
+  methods: {
+    moveToDetailPage(id) {
+      console.log(id);
+    },
+  }
 
   // data() {
   //   return {
