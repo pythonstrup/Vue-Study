@@ -1,9 +1,7 @@
 <template>
   <div class="app">
     <main>
-      <div>
-        <input type="text"/>
-      </div>
+      <SearchInput/>
       <ul>
         <li v-for="product in products" :key="product.id" class="item flex"
             @click="moveToDetailPage(product.id)">
