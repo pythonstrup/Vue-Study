@@ -1,7 +1,11 @@
 <template>
   <div class="app">
     <main>
-      <SearchInput/>
+<!--      <SearchInput-->
+<!--        :search-keyword="searchKeyword"-->
+<!--        @input="updateSearchKeyword"/>-->
+      <SearchInput
+        v-model="searchKeyword"/>
       <ul>
         <li v-for="product in products" :key="product.id" class="item flex"
             @click="moveToDetailPage(product.id)">
@@ -34,17 +38,16 @@ export default {
       console.log(id);
       this.$router.push(`/detail/${id}`)
     },
-  }
+    updateSearchKeyword(keyword) {
+      this.searchKeyword = keyword;
+    }
+  },
 
-  // data() {
-  //   return {
-  //     products: [],
-  //   }
-  // },
-  //
-  // async created() {
-  //
-  // }
+  data() {
+    return {
+      searchKeyword: '',
+    }
+  },
 }
 
 </script>
