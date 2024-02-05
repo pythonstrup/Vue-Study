@@ -5,7 +5,8 @@
 <!--        :search-keyword="searchKeyword"-->
 <!--        @input="updateSearchKeyword"/>-->
       <SearchInput
-        v-model="searchKeyword"/>
+        v-model="searchKeyword"
+        @search="searchProducts"/>
       <ul>
         <li v-for="product in products" :key="product.id" class="item flex"
             @click="moveToDetailPage(product.id)">
@@ -20,6 +21,7 @@
 
 <script>
 import axios from "axios";
+import {fetchProductsByKeyword} from "~/api";
 
 export default {
   async asyncData() {
@@ -38,8 +40,9 @@ export default {
       console.log(id);
       this.$router.push(`/detail/${id}`)
     },
-    updateSearchKeyword(keyword) {
-      this.searchKeyword = keyword;
+    async searchProducts() {
+      const response = await fetchProductsByKeyword(this.searchKeyword);
+      console.log(response);
     }
   },
 
