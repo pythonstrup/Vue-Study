@@ -42,7 +42,12 @@ export default {
     },
     async searchProducts() {
       const response = await fetchProductsByKeyword(this.searchKeyword);
-      console.log(response);
+      this.products = response.data.map(item => {
+        return {
+          ...item,
+          imageUrl: `${item.imageUrl}?random=${Math.random()}`
+        }
+      });
     }
   },
 
