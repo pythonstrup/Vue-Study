@@ -14,6 +14,10 @@
           <p>{{ product.name }}</p>
           <span>{{ product.price }}</span>
         </li>
+
+        <div class="cart-wrapper">
+          <button class="btn" @click="routeToCartPage">장바구니 바로가기</button>
+        </div>
       </ul>
     </main>
   </div>
@@ -48,6 +52,9 @@ export default {
           imageUrl: `${item.imageUrl}?random=${Math.random()}`
         }
       });
+    },
+    routeToCartPage() {
+      this.$router.push('/cart');
     }
   },
 
