@@ -11,7 +11,7 @@
       <div class="side-panel">
         <p class="name">{{ product.name }}</p>
         <p class="price">{{ product.price }}</p>
-        <button type="button" @click="addToCart">Add to Cart</button>
+        <button type="button" @click="addToCart">카트 담기</button>
 <!--        <NuxtLink to=""></NuxtLink>-->
       </div>
     </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import {fetchProductById} from "~/api";
+import {createCartItem, fetchProductById} from "~/api";
 
 export default {
   async asyncData({params}) {
@@ -30,9 +30,11 @@ export default {
   },
 
   methods: {
-    addToCart() {
+    async addToCart() {
+      const response = await createCartItem(this.product);
+      console.log(response);
       this.$store.commit('addCartItem', this.product);
-      this.$router.push('/cart');
+      await this.$router.push('/cart');
     }
   }
 

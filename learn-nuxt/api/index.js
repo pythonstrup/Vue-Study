@@ -15,7 +15,12 @@ function fetchProductsByKeyword(keyword) {
     }});
 }
 
+function createCartItem(cartItem) {
+  return instance.post('/carts', cartItem);
+}
+
 export {
   fetchProductById,
-  fetchProductsByKeyword
+  fetchProductsByKeyword,
+  createCartItem,
 }
