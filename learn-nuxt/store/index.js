@@ -30,10 +30,6 @@ export const actions = {
   },
   // Nuxt App이 실행될 때 무조건 실행되도록 설계된 라이프 사이클
   async nuxtServiceInit(storeContext, nuxtContext) {
-    const {data} = await fetchCartItems();
-    storeContext.commit('setCartItems', data.map(item => ({
-      ...item,
-      imageUrl: `${item.imageUrl}?random=${Math.random()}`
-    })));
+    await storeContext.dispatch(FETCH_CART_ITEMS);
   },
 }
