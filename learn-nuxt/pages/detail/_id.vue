@@ -12,7 +12,7 @@
         <p class="name">{{ product.name }}</p>
         <p class="price">{{ product.price }}</p>
         <button type="button" @click="addToCart">카트 담기</button>
-<!--        <NuxtLink to=""></NuxtLink>-->
+        <!--        <NuxtLink to=""></NuxtLink>-->
       </div>
     </div>
   </div>
@@ -27,6 +27,17 @@ export default {
     const response = await fetchProductById(id);
     const product = response.data;
     return {product};
+  },
+
+  head: {
+    title: 'Shopping Item',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: '이 상품은 ~~입니다.',
+      },
+    ],
   },
 
   methods: {
@@ -51,10 +62,12 @@ export default {
   justify-content: center;
   margin: 2rem 0;
 }
+
 .product-image {
   width: 500px;
   height: 375px;
 }
+
 .side-panel {
   display: flex;
   flex-direction: column;
